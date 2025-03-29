@@ -134,11 +134,6 @@ bool Cell::Impl::HasCache() const {
 
 /*=================TextImpl====================*/
 
-// Cell::EmptyImpl::EmptyImpl () {
-//     value_ = "";
-//     text_ = "";
-// }
-
 CellInterface::Value Cell::EmptyImpl::GetValue() const {
     return "";
 }
