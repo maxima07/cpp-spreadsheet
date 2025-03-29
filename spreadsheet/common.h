@@ -31,6 +31,7 @@ struct Size {
     int cols = 0;
 
     bool operator==(Size rhs) const;
+    
 };
 
 // Описывает ошибки, которые могут возникнуть при вычислении формулы.
@@ -39,19 +40,21 @@ public:
     enum class Category {
         Ref,    // ссылка на ячейку с некорректной позицией
         Value,  // ячейка не может быть трактована как число
-        Div0,  // в результате вычисления возникло деление на ноль
+        Arithmetic,  // в результате вычисления возникло деление на ноль
     };
 
     FormulaError(Category category);
-
     Category GetCategory() const;
-
     bool operator==(FormulaError rhs) const;
-
     std::string_view ToString() const;
 
 private:
     Category category_;
+};
+
+enum class CellType {
+    Text,
+    Value
 };
 
 std::ostream& operator<<(std::ostream& output, FormulaError fe);
